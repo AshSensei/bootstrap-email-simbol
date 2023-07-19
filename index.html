@@ -4,29 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Email Project</title>
-
+    <link rel="stylesheet" href="styles.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 </head>
 <body>
     
-
-    <button class="btn btn-primary d-flex " type="button" data-bs-toggle="offcanvas" href="inboxButton"> < </button>
+    <!--menu button only for xs/small devices-->
+    <div class="d-block d-md-none">
+        <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" href="#inboxButton" ariacontrols="inboxButton"> &#9776;</button>
+    </div>
     
+    
+    <!--offcanvas menu-->
     <div class="offcanvas offcanvas-start" tabindex="-1" id="inboxButton">
         <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="offcanvasInboxButton">Inboxes</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+            <h5 class="offcanvas-title" id="offcanvasInboxButton">Inboxes</h5> 
+            
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-controls="inboxButton"></button>
         </div>
 
         <div class="offcanvas-body">
-            <div class="btn-group-vertical" role="group" >
-                <button type="button" class="btn btn-primary">All Inboxes</button>
-                <button type="button" class="btn btn-primary">Gmail</button>
-                <button type="button" class="btn btn-primary">Yahoo</button>
-                <button type="button" class="btn btn-primary">Outlook</button>
-                <button type="button" class="btn btn-primary">Drafts</button>
-                <button type="button" class="btn btn-primary">Spam</button>
-                
+            <div class="btn-group-vertical w-100 gap-4 " role="group">
+                <button type="button" class="btn btn-info btn-block ">All Inboxes</button>
+                <button type="button" class="btn btn-info btn-block">Gmail</button>
+                <button type="button" class="btn btn-info btn-block">Yahoo</button>
+                <button type="button" class="btn btn-info btn-block">Outlook</button>
+                <button type="button" class="btn btn-info btn-block">Drafts</button>
+                <button type="button" class="btn btn-info btn-block">Spam</button>
             </div>
         </div>
     </div>
@@ -38,7 +42,7 @@
 
     <div class="container-fluid">
         <div class = "input-group mb-3">
-            <input type="text" class="form-control" placeholder="Search mail">
+            <input type="text" class="form-control" placeholder="Search mail" id="search-bar">
             <button class="btn btn-outline-secondary" type="button" id="button-addon2">&#128269;</button>
         </div>
 
@@ -46,28 +50,92 @@
 
     <div class="container-fluid">
         <div class="row">
-            <div class ="col">
+            <!--list of inboxes-->
+            <div class="col-md-3 col-lg-2 d-none d-md-block inbox-list">
+                &nbsp
+                <div class="btn-group-vertical w-100 gap-4"  role="group">
+                    <button type="button" class="btn btn-info btn-block">Compose&#9997</button>
+                    <button type="button" class="btn btn-info btn-light ">All Inboxes</button>
+                    <button type="button" class="btn btn-info btn-light">Gmail</button>
+                    <button type="button" class="btn btn-info btn-light">Yahoo</button>
+                    <button type="button" class="btn btn-info btn-light">Outlook</button>
+                    <button type="button" class="btn btn-info btn-light">Drafts</button>
+                    <button type="button" class="btn btn-info btn-light">Spam</button>
+                </div>
+            </div>
+
+            <!--list of emails-->
+            <div class ="col-xs-12 col-md-9 col-lg-4">
                 <!--let's keep all email viewing in one column-->
                 <h2 class="sender">First Email Sender</h2>
-                <h5 class="subject">First Email Subject</h5>
-                <h5 id="message" class="text-truncate">Beginning of email until we get to cutoff...</h5>
+
+                <div class="subject-div">
+                    <h5 class="subject">First Email Subject</h5>
+                    <button type="button" class ="btn btn-dark" data-bs-toggle="modal" data-bs-target="#editModal" class="modal-button">&vellip;</button>
+                </div>
+                
+                
+                <h5 id="message" class="text-truncate">Beginning of email until we get to cutoff</h5>
                 <hr>
                 
                 <h2 class="sender">Second Email Sender</h2>
-                <h5 class="subject">Second Email Subject</h5>
-                <h5 id="message" class="text-truncate">Beginning of email until we get to cutoff...</h5>
+                <div class="subject-div">
+                    <h5 class="subject">Second Email Subject</h5>
+                    <button type="button" class ="btn btn-dark" data-bs-toggle="modal" data-bs-target="#editModal" class="modal-button">&vellip;</button>
+                </div>
+                <h5 id="message" class="text-truncate">Beginning of email until we get to cutoff</h5>
                 <hr>
             
             
                 <h2 class="sender">Third Email Sender</h2>
-                <h5 class="subject">Third Email Subject</h5>
-                <h5 id="message" class="text-truncate">Beginning of email until we get to cutoff...</h5>
+                <div class="subject-div">
+                    <h5 class="subject">Third Email Subject</h5>
+                    <button type="button" class ="btn btn-dark" data-bs-toggle="modal" data-bs-target="#editModal" class="modal-button">&vellip;</button>
+                </div>
+                <h5 id="message" class="text-truncate">Beginning of email until we get to cutoff</h5>
                 <hr>
             </div>
+
+            <!--email viewing section-->
+            <div class="d-none d-lg-block col-lg-6">
+                <div></div>
+            </div>
+        </div>
+
+        <!--modal content-->
+        <div class="modal" tabindex="-1" id="editModal">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Email Options</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    
+                
+                    <div class="modal-body">
+                        <div class="btn-group-vertical w-100 gap-4" role="group">
+                            <button type="button" class="btn btn-secondary btn-block ">Reply</button>
+                            <button type="button" class="btn btn-secondary btn-block">Reply All</button>
+                            <button type="button" class="btn btn-success btn-block">Forward</button>
+                            <button type="button" class="btn btn-danger btn-block">Trash</button>
+                            <button type="button" class="btn btn-primary btn-block">Mark as Read</button>
+                            <button type="button" class="btn btn-warning btn-block">Flag</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 
 
-
+    <footer>
+        <div class="footer-bottom w-100 d-block d-md-none d-flex">
+            <button type="button" class="btn btn-info btn-block">Compose</button>
+        </div>
+        
+    </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+
 </body>
 </html>
