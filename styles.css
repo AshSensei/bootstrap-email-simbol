@@ -2,7 +2,10 @@ body{
     min-height:100vh;
     margin: 0;
     padding: 0;
-    background-color: #E8E8E4;
+    
+}
+.heading, .search-container,.background{
+    background-color:#F6F5F3;
     
 }
 
@@ -24,10 +27,22 @@ body{
     background-color:#ECE4DB;
     min-height:100vh;
 }
+.email-list{
+    background-color:#CEF0F7;
+    min-height:100vh;
+}
+
+.email-view{
+    background-color:#ECEAE7;
+    min-height:100vh;
+}
 .footer-bottom{
     position:fixed;
     display:flex;
     justify-content:center;
+    left:0;
+    right:0;
+    width:100%;
     bottom:0;
     padding:5px;
     
