@@ -10,13 +10,18 @@
 <body>
     
     <!--menu button only for xs/small devices-->
-    <div class="d-block d-md-none">
-        <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" href="#inboxButton" aria-controls="inboxButton"> &#9776;</button>
+    <div class="d-block d-md-none d-flex ">
+        <div class="col-3">
+            <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" href="#inboxButton" aria-controls="inboxButton"> &#9776;</button>
+        </div>
+        <div class="col-6 d-flex justify-content-center">
+            <h1 id="inbox-title text-center">All Inboxes</h1>
+        </div>
     </div>
     
     
     <!--offcanvas menu-->
-    <div class="offcanvas offcanvas-start" tabindex="-1" id="inboxButton">
+    <div class="offcanvas offcanvas-start d-flex" tabindex="-1" id="inboxButton">
         <div class="offcanvas-header">
             <h5 class="offcanvas-title" id="offcanvasInboxButton">Inboxes</h5> 
             
@@ -36,7 +41,8 @@
     </div>
     
     
-    <div class="d-flex justify-content-center align-items-center heading"><h1 id="inbox-title">All Inboxes</h1></div>
+    
+    <div class="text-center heading d-none d-md-block"><h1 id="inbox-title ">Generic Email .Co</h1></div>
 
 
     <div class="background">
