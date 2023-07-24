@@ -50,3 +50,24 @@ body{
     background-color:lightgrey;
     
 }
+
+.indiv-email{
+    padding:10px;
+}
+
+.sender{
+    font-size:1.2em;
+}
+.subject{
+    font-size:0.9em;
+}
+.message{
+    font-size:0.8em;
+}
+
+
+@media (min-width:992px){
+    #second-email{
+        background-color:#8fdeee;
+    }
+}
